@@ -1,0 +1,16 @@
+TO DO:
+
+1. creating 4x4 empty board(gBoard):✅
+
+
+2. insert prototype elements 
+it will have 2 mines, and some elements✅
+
+3.render this board✅
+
+
+4. creating a function that counts neighbors ✅
+
+5. using the counting the neighbors, to count to bombs around each cell✅
+
+6.implementing the idea of the bombs detected into the UI 
