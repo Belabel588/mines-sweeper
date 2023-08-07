@@ -1,5 +1,10 @@
 'use strict'
 
+
+// ***************************************************************
+// *  CREATING MATRIXES AND BOARDS
+// ***************************************************************
+
 function createMat(ROWS, COLS) {
     const mat = []
     for (var i = 0; i < ROWS; i++) {
@@ -11,23 +16,6 @@ function createMat(ROWS, COLS) {
     }
     return mat
 }
-
-
-function getRandomInt(max) {
-    return Math.floor(Math.random() * max);
-}
-
-function getRandomIntInclusive(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1) + min);
-}
-
-
-
-
-// setInterval(function () { element.innerHTML += "Hello" }, 1000);
-
 
 function renderBoard(mat, selector) {
 
@@ -50,19 +38,20 @@ function renderBoard(mat, selector) {
 }
 
 
-// location such as: {i: 2, j: 7}
-function renderCell(location, value) {
-    // Select the elCell and set the value
-    const elCell = document.querySelector(`.cell-${location.i}-${location.j}`)
-    elCell.innerHTML = value
+// ***************************************************************
+// *  RANDOM NUMS AND COLORS
+// ***************************************************************
+
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
 }
 
-function onOpenModal() {
-    // Todo: show the modal and schedule its closing
-    var elModal = document.querySelector('.modal')
-    elModal.style.display = 'block'
-    setTimeout(onCloseModal, 5000)
+function getRandomIntInclusive(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1) + min);
 }
+
 
 function getRandomColor() {
     var letters = '0123456789ABCDEF';
@@ -74,10 +63,41 @@ function getRandomColor() {
 }
 
 
+
+
+// ***************************************************************
+// *  TIMERS
+// ***************************************************************
+
+
+
+// setInterval(function () { element.innerHTML += "Hello" }, 1000);
+
+
 // setTimeout(() => {
 //     console.log("Delayed for 1 second.");
 // }, 1000);
 
+
+
+
+
+// ***************************************************************
+// *  POP-UPS
+// ***************************************************************
+
+function onOpenModal() {
+    // Todo: show the modal and schedule its closing
+    var elModal = document.querySelector('.modal')
+    elModal.style.display = 'block'
+    setTimeout(onCloseModal, 5000)
+}
+
+
+
+// ***************************************************************
+// *  NEIGHBORS
+// ***************************************************************
 
 
 function MinesCountNegs(mat, rowIdx, colIdx) {
@@ -96,30 +116,35 @@ function MinesCountNegs(mat, rowIdx, colIdx) {
 
 
 
-function getEmptyCell(board) {
-    // console.log(board)
-    var emptyCells = []
-    for (let i = 0; i < board.length; i++) {
-        for (let j = 0; j < board[i].length; j++) {
-            if (board[i][j].gameElement === null && board[i][j].type !== WALL) {
-                emptyCells.push({ i, j })
-            }
-        }
+
+
+
+
+
+// ***************************************************************
+// *  SCALING LEVELS 
+// ***************************************************************
+
+
+function getDifficulty(elBtn) {
+    var diff = elBtn.classList;
+    if (diff.contains('diff1')) {
+        gLevel.SIZE = 4;
+        gLevel.MINES = 2;
+        gBoard = createBoardData(gLevel.SIZE);
+    } else if (diff.contains('diff2')) {
+        gLevel.SIZE = 8;
+        gLevel.MINES = 14;
+        gBoard = createBoardData(gLevel.SIZE);
+    } else if (diff.contains('diff3')) {
+        gLevel.SIZE = 12;
+        gLevel.MINES = 32;
+        gBoard = createBoardData(gLevel.SIZE);
     }
+    elBtn.style.backgroundColor = 'rgba(41, 255, 144, 0.548)';
+    gCount = 1;
+    renderBoard(gBoard);
 }
-
-
-
-function renderRandomBall() {
-    const emptyCell = getEmptyCell(gBoard)
-    console.log('emptyCell', emptyCell)
-    gBoard[emptyCell.i][emptyCell.j].gameElement = BALL
-    // console.log('em', gBoard[emptyCell.i][emptyCell.j])
-    renderCell(emptyCell, BALL_IMG)
-    gBallOnFloor++
-    console.log('gBallFloor', gBallOnFloor)
-}
-
 
 
 // ***************************************************************
@@ -154,3 +179,39 @@ function randomizeBombs(board, numBombs) {
     }
 
 }
+
+
+
+
+
+
+// function getEmptyCell(board) {
+//     // console.log(board)
+//     var emptyCells = []
+//     for (let i = 0; i < board.length; i++) {
+//         for (let j = 0; j < board[i].length; j++) {
+//             if (board[i][j].gameElement === null && board[i][j].type !== WALL) {
+//                 emptyCells.push({ i, j })
+//             }
+//         }
+//     }
+// }
+
+
+
+// function renderRandomBall() {
+//     const emptyCell = getEmptyCell(gBoard)
+//     console.log('emptyCell', emptyCell)
+//     gBoard[emptyCell.i][emptyCell.j].gameElement = BALL
+//     // console.log('em', gBoard[emptyCell.i][emptyCell.j])
+//     renderCell(emptyCell, BALL_IMG)
+//     gBallOnFloor++
+//     console.log('gBallFloor', gBallOnFloor)
+// }
+
+// // location such as: {i: 2, j: 7}
+// function renderCell(location, value) {
+//     // Select the elCell and set the value
+//     const elCell = document.querySelector(`.cell-${location.i}-${location.j}`)
+//     elCell.innerHTML = value
+// }

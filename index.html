@@ -5,33 +5,56 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href = "stlye.css">
-  <title>Document</title>
+  <title>Mine Sweeper</title>
 </head>
 
 
 
-
 <body onload="onInit()">
+  <div class="game-container">
 
 
-  <div class="main">
 
+
+    
+    <div class="buttons">
+      <button class="btn diff diff1" onclick="getDifficulty(this)"> easy </button>
+      <button class="btn diff diff2" onclick="getDifficulty(this)"> medium</button>
+      <button class="btn diff diff3" onclick="getDifficulty(this)"> hard</button>
+      
+        
+         
+ 
+      
+  </div>
+  <div class="board-container">
+    
     <table class= "board"> </table>
     
-    <button class="btn"> 😊 </button>
-    <button class="btn diff diff1" onclick="getDifficulty(this)"> easy </button>
-    <button class="btn diff diff2" onclick="getDifficulty(this)"> medium</button>
-    <button class="btn diff diff3" onclick="getDifficulty(this)"> hard</button>
+    <div class="game-start-container">
 
+      <div class="game-actions">
+  
+      <button class="btn game-restart"> 😊 </button>
+      <!-- <button class="btn  flag" > 🚩 </button> -->
+      
+
+      </div>
+        <footer class="made-by"> developed by: Ori Halfon</footer>
+
+    </div>
+    
+    
   </div>    
-    
-    
-
-
-
-
-
+  
+  
+  
+  
+  
+  
+  
   <script src="main.js"></script>
 </body>
+</div>
 </html>
 
