@@ -1,6 +1,42 @@
 'use strict'
 
 
+
+// **************************************************************
+// *  TIMER
+// **************************************************************
+
+//* HTML 
+// < div id = "timer" > 00: 00 </ >
+
+
+
+//* js:
+const timerElement = document.getElementById('timer');
+
+let seconds = 0;
+let minutes = 0;
+
+// Update the timer every second
+const intervalId = setInterval(updateTimer, 1000);
+
+function updateTimer() {
+    seconds++;
+    if (seconds >= 60) {
+        seconds = 0;
+        minutes++;
+    }
+
+    // Format the time with leading zeros
+    const formattedSeconds = String(seconds).padStart(2, '0');
+    const formattedMinutes = String(minutes).padStart(2, '0');
+
+    // Update the timer element
+    timerElement.textContent = `${formattedMinutes}:${formattedSeconds}`;
+}
+
+
+
 // ***************************************************************
 // *  CREATING MATRIXES AND BOARDS
 // ***************************************************************
